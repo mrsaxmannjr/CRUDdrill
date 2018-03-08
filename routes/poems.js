@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require("express");
+
 const router = express.Router();
 
-const queries = require('../queries');
+const queries = require("../queries");
 
-router.get('/', (request, response, next) => {
+router.get("/", (request, response, next) => {
   queries
     .list()
     .then(poems => {
@@ -12,7 +13,7 @@ router.get('/', (request, response, next) => {
     .catch(next);
 });
 
-router.get('/:id', (request, response, next) => {
+router.get("/:id", (request, response, next) => {
   queries
     .read(request.params.id)
     .then(poem => {
@@ -21,7 +22,7 @@ router.get('/:id', (request, response, next) => {
     .catch(next);
 });
 
-router.post('/', (request, response, next) => {
+router.post("/", (request, response, next) => {
   queries
     .create(request.body)
     .then(poem => {
@@ -30,7 +31,7 @@ router.post('/', (request, response, next) => {
     .catch(next);
 });
 
-router.delete('/:id', (request, response, next) => {
+router.delete("/:id", (request, response, next) => {
   queries
     .delete(request.params.id)
     .then(() => {
@@ -39,7 +40,7 @@ router.delete('/:id', (request, response, next) => {
     .catch(next);
 });
 
-router.put('/:id', (request, response, next) => {
+router.put("/:id", (request, response, next) => {
   queries
     .update(request.params.id, request.body)
     .then(poem => {
